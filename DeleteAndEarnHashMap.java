@@ -11,7 +11,7 @@ import java.util.Map;
 public class DeleteAndEarnHashMap {
     class Solution {
         public int deleteAndEarn(int[] nums) {
-            Map<Integer, Integer> numToFreqMap = new HashMap<>();
+            Map<Integer, Integer> numToFreqMap = new HashMap<>(); //Array under the hood
             int minKey = Integer.MAX_VALUE;
             int maxKey = Integer.MIN_VALUE;
 
