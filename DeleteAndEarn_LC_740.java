@@ -37,6 +37,39 @@ import java.util.Map;
  * Sort the array
  */
 public class DeleteAndEarn_LC_740 {
+
+    /**
+     * TC: O(N) , N = max element
+     * SC: O(N)
+     * 
+     * Use bucket sort.
+     * 
+     * @param nums
+     * @return
+     */
+    public int deleteAndEarn_class_spaceOptimized(int[] nums) {
+        int max = Arrays.stream(nums).max().getAsInt();
+        // indexing starts from 0
+        int[] keys = new int[max + 1];
+        // accumulate value per key
+        for (int i : nums) {
+            keys[i] += i;
+        }
+
+        int prev2 = keys[0];
+        int prev = Math.max(prev2, keys[1]);
+
+        int pick, notPick;
+        for (int i = 2; i <= max; i++) {
+            pick = keys[i] + prev2;
+            notPick = prev;
+            prev2 = prev;
+            prev = Math.max(pick, notPick);
+        }
+
+        return prev;
+    }
+
     /**
      * TC: O(2 ^ k)
      * SC: O(4k)
