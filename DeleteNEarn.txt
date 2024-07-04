@@ -1,0 +1,31 @@
+//Time complexity: O(n) + O(max(n))
+//Space complexity: O(max)
+//Approach: It is important to maintain the order of the input elements in sorted manner. 
+//This is because when a value 3 is deleted 2 and 1 elments should be removed from input. 
+//To identify to 2 and 1 we have to traverse entire array. So put elements to array based on the input numbers.
+//Follow house robber patern to identify maximum earning. Note that in house robber pattern alternate elements are always skipped.
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        int max = 0;
+        for(int num: nums)
+        {
+            max = Math.max(max, num);
+        }
+        
+        int[] arr = new int[max+1];
+        for(int num:nums)
+        {
+            arr[num] += num;
+        }
+
+        int prev = arr[0];
+        int curr = Math.max(arr[0], arr[1]);
+        for(int i = 2; i < arr.length; i++)
+        {
+            int temp = curr;
+            curr = Math.max(prev+arr[i],curr);
+            prev = temp;
+        }  
+        return curr; 
+    }
+}
