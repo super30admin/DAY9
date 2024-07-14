@@ -1,0 +1,50 @@
+#Problem 1
+
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        if nums == None or len(nums) == 0:
+            return -1
+        
+        n = len(nums)
+        maxNum = 0
+        for i in nums:
+            maxNum = max(maxNum, i)
+
+        sumList = [0 for i in range(maxNum + 1)]
+
+        for i in nums:
+            sumList[i] = sumList[i] + i
+
+        skip = 0
+        take = sumList[0]
+
+        for i in range(1, maxNum + 1):
+            tempSkip = skip
+            skip = max(skip, take)
+            take = tempSkip + sumList[i]
+        return max(skip,take)
+
+
+#Problem 2
+
+class Solution:
+    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+        if matrix == None or len(matrix) == 0:
+            return -1
+
+        n = len(matrix)
+
+        for i in range(n-2, -1, -1):
+            for j in range(n):
+                if j == 0:
+                    matrix[i][j] = matrix[i][j] + min(matrix[i+1][j], matrix[i+1][j+1])
+                elif j == n - 1:
+                    matrix[i][j] = matrix[i][j] + min(matrix[i+1][j], matrix[i+1][j-1])
+                else:
+                    matrix[i][j] = matrix[i][j] + min(matrix[i+1][j], matrix[i+1][j-1], matrix[i+1][j+1])
+        
+        minNum = int(sys.maxsize)
+        for i in matrix[0]:
+            minNum = min(minNum, i)
+
+        return minNum
