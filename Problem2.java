@@ -1,5 +1,6 @@
 //Dynamic Programming
-                                                                                                                //Time, Space = O(n^2)
+
+//Time, Space = O(n^2)
 public class Solution {
     public int minFallingPathSum(int[][] matrix) {
         // get the size of the matrix
