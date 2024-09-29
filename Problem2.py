@@ -1,5 +1,5 @@
 # 931. Minimum Falling Path Sum
-#Attempt 1: 2D dp array
+#Attempt 1: 2d dp array
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
         m = len(matrix)

@@ -1,4 +1,4 @@
-# 740. Delete and Earn
+# 740 Delete and Earn
 #Using tabulation
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
