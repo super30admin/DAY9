@@ -1,5 +1,5 @@
-# TC: O(n)
-# SC: O(n)
+# TC: O(max(n))
+# SC: O(max(n))
 # This code compiled on LC successfully
 
 class Solution:
