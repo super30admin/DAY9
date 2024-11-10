@@ -11,7 +11,7 @@ var minFallingPathSum = function (matrix) {
       if (col > 0) {
         left = matrix[row - 1][col - 1];
       }
-      if (col < (matrix[row].length - 1)) {
+      if (col < matrix[row].length - 1) {
         right = matrix[row - 1][col + 1];
       }
       matrix[row][col] = matrix[row][col] + Math.min(left, right, mid);
@@ -44,6 +44,27 @@ var helper = function (matrix, row, column) {
 
   // return
   return currentValue + Math.min(leftMin, centerMin, rightMin);
+};
+
+var helperV2 = function (matrix, row, column, sum) {
+  // Base Case
+  let isColumnValid = column >= 0 && column < matrix[0].length;
+
+  if (isColumnValid == false || row > matrix.length) {
+    return Number.MAX_SAFE_INTEGER;
+  }
+  if (row == matrix.length) {
+    return sum;
+  }
+
+  // Explore All Paths
+  let currentValue = matrix[row][column];
+  let leftMin = helper(matrix, row + 1, column - 1, sum + currentValue);
+  let centerMin = helper(matrix, row + 1, column, sum + currentValue);
+  let rightMin = helper(matrix, row + 1, column + 1, sum + currentValue);
+
+  // return
+  return Math.min(leftMin, centerMin, rightMin);
 };
 
 test("Scenario #2: Happy Path", () => {
