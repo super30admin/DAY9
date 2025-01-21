@@ -1,0 +1,9 @@
+Time Complexity : O(n log n)
+Space Complexity : O(n)
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : No
+
+
+Your code here along with comments explaining your approach in three sentences only
+I computed the frequencies of all the elements in the array and prepared the sorted array (sorted based on the values, not frequency) of numbers and their corresponding frequencies.
+and then used House Robber kind of DP algorithm to this newly generated array of pairs of elements and frequencies
