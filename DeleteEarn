@@ -1,0 +1,38 @@
+class DeleteEarn {
+    public int deleteAndEarn(int[] nums) {
+        
+        if(nums == null || nums.length==0)
+        return 0;
+
+        int n = nums.length;
+        int max= Integer.MIN_VALUE;
+        for(int i=0;i<n;i++)
+        {
+            max= Math.max(max,nums[i]);
+        }
+
+        int a[] = new int[max+1];
+
+
+        for(int i=0;i<n;i++)
+        {
+            int cur = nums[i];
+            a[cur] += cur;
+
+        }
+
+        //used the above steps and made it into house robber problem
+    int prev = a[0];
+      int cur = Math.max(a[0], a[1] + 0);
+      for(int i=2;i<a.length;i++)
+      {  int temp= cur;
+         cur = Math.max(cur, a[i]+prev);
+        prev = temp;
+      } 
+
+      return cur;
+
+    }
+}
+//tc: O(m+n)  m is the maximum element and n is the length of the given array
+//sc: O(n) 
